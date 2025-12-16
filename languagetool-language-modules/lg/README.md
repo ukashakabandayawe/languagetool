@@ -47,8 +47,68 @@ Then I ran '''mvn clean install -DskipTests''' and the process went smooth for a
 [INFO] 1 error
 '''
 
-According to the instructions, we have to copy English.java and adopt it and I also just did so but English.java is so huge for the start and so there were so many English specific rules and according to my opinion, a small language class should be adapted for example Arabic.java which required deleted a few Arabic specific rules and retaining the basic and required rules for the project to build successfully. 
+According to the instructions, we have to copy English.java and adopt it and I also just did so but English.java is so huge for the start and so there were so many English specific rules and according to my opinion, a small language class should be adapted for example Arabic.java which required deleted a few Arabic specific rules and retaining the basic and required rules for the project to build successfully.
 
+So the command ''' mvn clean install -DskipTests -rf: language-lg''' worked but when I tried to run  '''languagetool-standalone\src\main\java\org\languagetool\gui\Main.java''' , it failed and returned the errors below. 
 
+''' 
+Exception in thread "AWT-EventQueue-0" java.lang.ExceptionInInitializerError
+        at org.languagetool.language.identifier.LanguageIdentifierService.getDefaultLanguageIdentifier(LanguageIdentifierService.java:54)
+        at org.languagetool.gui.LanguageToolSupport.<init>(LanguageToolSupport.java:105)
+        at org.languagetool.gui.Main.createGUI(Main.java:464)
+        at org.languagetool.gui.Main$7.run(Main.java:1199)
+        at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+        at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:773)
+        at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+        at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+        at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+        at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86)
+        at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
+        at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+        at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124) 
+        at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+        at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+        at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+        at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+Caused by: java.lang.RuntimeException: java.io.IOException: Common words file not found for Luganda: lg/common_words.txt
+        at org.languagetool.language.identifier.LanguageIdentifier.<clinit>(LanguageIdentifier.java:59)
+        ... 17 more
+Caused by: java.io.IOException: Common words file not found for Luganda: lg/common_words.txt
+        at org.languagetool.language.identifier.detector.CommonWordsDetector.<init>(CommonWordsDetector.java:68)
+        at org.languagetool.language.identifier.LanguageIdentifier.<clinit>(LanguageIdentifier.java:57)
+        ... 17 more
+PS E:\languagetool> 
+'''
+
+So the file common_words.txt was required but still after it was create, I ran into errors 
+
+'''
+java.lang.RuntimeException: Could not set up language identifier
+        at org.languagetool.language.identifier.DefaultLanguageIdentifier.<init>(DefaultLanguageIdentifier.java:118)
+        at org.languagetool.language.identifier.DefaultLanguageIdentifier.<init>(DefaultLanguageIdentifier.java:89)
+        at org.languagetool.language.identifier.LanguageIdentifierService.getDefaultLanguageIdentifier(LanguageIdentifierService.java:54)
+        at org.languagetool.gui.LanguageToolSupport.<init>(LanguageToolSupport.java:105) 
+        at org.languagetool.gui.Main.createGUI(Main.java:464)
+        at org.languagetool.gui.Main$7.run(Main.java:1199)
+        at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+        at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:773)       
+        at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+        at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+        at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+        at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86)
+        at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
+        at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+        at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+        at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+        at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+        at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+        at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)    
+Caused by: java.io.IOException: No language file available named lg at languages/lg!     
+        at com.optimaize.langdetect.profiles.LanguageProfileReader.read(LanguageProfileReader.java:53)
+        at com.optimaize.langdetect.profiles.LanguageProfileReader.read(LanguageProfileReader.java:78)
+        at org.languagetool.language.identifier.DefaultLanguageIdentifier.loadProfiles(DefaultLanguageIdentifier.java:194)
+        at org.languagetool.language.identifier.DefaultLanguageIdentifier.<init>(DefaultLanguageIdentifier.java:102)
+        ... 18 more
+'''
 
 

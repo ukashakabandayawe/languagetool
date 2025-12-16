@@ -1312,6 +1312,14 @@
                         <!-- helps IntelliJ to not forget the configuration (https://stackoverflow.com/questions/29888592/): -->
                         <source>${maven.compiler.source}</source>
                         <target>${maven.compiler.target}</target>
+                        <!-- Ensure Lombok annotations (@Getter, @Slf4j, etc.) are processed during Maven builds -->
+                        <annotationProcessorPaths>
+                            <path>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                                <version>${lombok.version}</version>
+                            </path>
+                        </annotationProcessorPaths>
                     </configuration>
                 </plugin>
                 <plugin>

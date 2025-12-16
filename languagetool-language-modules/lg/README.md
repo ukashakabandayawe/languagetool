@@ -110,5 +110,72 @@ Caused by: java.io.IOException: No language file available named lg at languages
         at org.languagetool.language.identifier.DefaultLanguageIdentifier.<init>(DefaultLanguageIdentifier.java:102)
         ... 18 more
 '''
+To resolve this, I added Luganda to the list of ignored languages in "languagetool-core\src\main\java\org\languagetool\language\identifier\DefaultLanguageIdentifier.java"
+as: ''' private static final List<String> ignoreLangCodes = Arrays.asList("ast", "gl", "lg");'''
+
+Then I ran into another error, though the GUI had launched
+
+'''
+WARN  o.l.l.i.DefaultLanguageIdentifier fastText not configured - language detection performance will be degraded. See https://dev.languagetool.org/http-server#starting-from-command-line for instructions.
+Exception in thread "AWT-EventQueue-0" java.lang.RuntimeException: java.lang.RuntimeException: Could not activate rules
+        at org.languagetool.gui.LanguageToolSupport.reloadLanguageTool(LanguageToolSupport.java:258)
+        at org.languagetool.gui.LanguageToolSupport.setLanguage(LanguageToolSupport.java:418)
+        at org.languagetool.gui.Main$1.itemStateChanged(Main.java:483)
+        at java.desktop/javax.swing.JComboBox.fireItemStateChanged(JComboBox.java:1257)  
+        at java.desktop/javax.swing.JComboBox.selectedItemChanged(JComboBox.java:1318)   
+        at java.desktop/javax.swing.JComboBox.contentsChanged(JComboBox.java:1365)       
+        at java.desktop/javax.swing.AbstractListModel.fireContentsChanged(AbstractListModel.java:127)
+        at java.desktop/javax.swing.DefaultComboBoxModel.setSelectedItem(DefaultComboBoxModel.java:94)
+        at java.desktop/javax.swing.JComboBox.setSelectedItem(JComboBox.java:609)        
+        at java.desktop/javax.swing.JComboBox.setSelectedIndex(JComboBox.java:654)       
+        at java.desktop/javax.swing.plaf.basic.BasicComboPopup$Handler.mouseReleased(BasicComboPopup.java:946)
+        at java.desktop/java.awt.AWTEventMulticaster.mouseReleased(AWTEventMulticaster.java:298)
+        at java.desktop/java.awt.Component.processMouseEvent(Component.java:6626)        
+        at java.desktop/javax.swing.JComponent.processMouseEvent(JComponent.java:3389)   
+        at java.desktop/javax.swing.plaf.basic.BasicComboPopup$1.processMouseEvent(BasicComboPopup.java:551)
+        at java.desktop/java.awt.Component.processEvent(Component.java:6391)
+        at java.desktop/java.awt.Container.processEvent(Container.java:2266)
+        at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:5001)        
+        at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)        
+        at java.desktop/java.awt.Component.dispatchEvent(Component.java:4833)
+        at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4948)
+        at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4575)
+        at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4516)
+        at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2310)        
+        at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)
+        at java.desktop/java.awt.Component.dispatchEvent(Component.java:4833)
+        at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:775)       
+        at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+        at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+        at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+        at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86)
+        at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:97)
+        at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:747)
+        at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+        at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+        at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86)
+        at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:744)
+        at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+        at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+        at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+        at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+        at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+        at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)    
+Caused by: java.lang.RuntimeException: Could not activate rules
+        at org.languagetool.JLanguageTool.<init>(JLanguageTool.java:364)
+        at org.languagetool.JLanguageTool.<init>(JLanguageTool.java:321)
+        at org.languagetool.JLanguageTool.<init>(JLanguageTool.java:299)
+        at org.languagetool.JLanguageTool.<init>(JLanguageTool.java:278)
+Caused by: java.io.FileNotFoundException: \org\languagetool\rules\lg\grammar.xml (??? ??? ?? ? ????)
+        at java.base/java.io.FileInputStream.open0(Native Method)
+        at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+        at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+        at java.base/java.io.FileInputStream.<init>(FileInputStream.java:111)
+        at org.languagetool.Language.initializePatternRules(Language.java:691)
+        at org.languagetool.Language.getPatternRules(Language.java:674)
+        at org.languagetool.JLanguageTool.activateDefaultPatternRules(JLanguageTool.java:720)
+        at org.languagetool.JLanguageTool.<init>(JLanguageTool.java:355)
+        ... 49 more
+'''
 
 

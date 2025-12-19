@@ -1,0 +1,29 @@
+# Luganda common words (starter list)
+# One word per line, lowercase. Expand over time (~10k ideal).
+# This minimal list prevents startup errors and aids basic detection.
+ne
+nga
+ku
+mu
+wa
+naye
+oba
+bwe
+kati
+wali
+nze
+ggwe
+ye
+ffe
+mwe
+bo
+omuntu
+abantu
+ekyo
+kino
+bino
+waliwo
+singa
+okugenda
+okufuna
+okukola

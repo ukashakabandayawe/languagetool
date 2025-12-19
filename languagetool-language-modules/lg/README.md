@@ -1,6 +1,13 @@
 ## HOW I ADDED LUGANDA
 I tried to follow the instructions for adding a new language to language tool but I faced some errors while trying to do so, therefore I decided to document how I came over those errors.
 
+According to the instructions, you are supposed to switch to the languagetool-language-modules directory and create a new maven project using the command '''mvn archetype:generate -DgroupId=org.languagetool -DartifactId=**xy** -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false''' but that caused an error below
+'''
+[ERROR] The goal you specified requires a project to execute but there is no POM in this directory (E:\languagetool\languagetool-language-modules). Please verify you invoked Maven from the correct directory.
+'''
+I overcame this by using VS code built in wizard for creating a maven project.
+
+
 The first challenge I ecountered was that the command '''mvn clean package''' was producing errors and the solution was to add the following to the top level pom.xml inside the cofigyuration tag 
 
 '''
@@ -177,5 +184,99 @@ Caused by: java.io.FileNotFoundException: \org\languagetool\rules\lg\grammar.xml
         at org.languagetool.JLanguageTool.<init>(JLanguageTool.java:355)
         ... 49 more
 '''
+Then I think a grammar.xml file was needed but still I ran into chunk of other errors and these errors occured whenever I used the combo box to switch to Luganda, perhaps I needed to add spellchecker rules to resolve it.
+
+'''
+WARN  o.l.l.i.DefaultLanguageIdentifier fastText not configured - language detection performance will be degraded. See https://dev.languagetool.org/http-server#starting-from-command-line for instructions.
+java.lang.RuntimeException: java.util.concurrent.ExecutionException: java.lang.RuntimeException: java.lang.RuntimeException: Could not check sentence (language: Luganda): <sentcontent>This is a example input to to show you how LanguageTool works.</sentcontent>
+        at org.languagetool.MultiThreadedJLanguageTool.performCheck(MultiThreadedJLanguageTool.java:217)
+        at org.languagetool.JLanguageTool.checkInternalWithCustomRules(JLanguageTool.java:1123)
+        at org.languagetool.JLanguageTool.checkInternal(JLanguageTool.java:1085)
+        at org.languagetool.JLanguageTool.checkInternal(JLanguageTool.java:1078)
+        at org.languagetool.JLanguageTool.check(JLanguageTool.java:1021)
+        at org.languagetool.JLanguageTool.check(JLanguageTool.java:1006)
+        at org.languagetool.JLanguageTool.check(JLanguageTool.java:996)
+        at org.languagetool.JLanguageTool.check(JLanguageTool.java:978)
+        at org.languagetool.JLanguageTool.check(JLanguageTool.java:970)
+        at org.languagetool.JLanguageTool.check(JLanguageTool.java:927)
+        at org.languagetool.JLanguageTool.check(JLanguageTool.java:899)
+        at org.languagetool.gui.LanguageToolSupport.checkText(LanguageToolSupport.java:734)
+        at org.languagetool.gui.LanguageToolSupport$RunnableImpl.run(LanguageToolSupport.java:902)
+        at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+        at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+        at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.util.concurrent.ExecutionException: java.lang.RuntimeException: java.lang.RuntimeException: Could not check sentence (language: Luganda): <sentcontent>This is a example input to to show you how LanguageTool works.</sentcontent>
+        at java.base/java.util.concurrent.ForkJoinTask.reportExecutionException(ForkJoinTask.java:605)
+        at java.base/java.util.concurrent.ForkJoinTask.get(ForkJoinTask.java:981)
+        at org.languagetool.MultiThreadedJLanguageTool.performCheck(MultiThreadedJLanguageTool.java:214)
+        ... 18 more
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException: Could not check sentence (language: Luganda): <sentcontent>This is a example input to to show you how LanguageTool works.</sentcontent>
+        at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+        at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+        at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+        at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+        at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+        at java.base/java.util.concurrent.ForkJoinTask.getThrowableException(ForkJoinTask.java:562)
+        at java.base/java.util.concurrent.ForkJoinTask.reportExecutionException(ForkJoinTask.java:604)
+        ... 20 more
+Caused by: java.lang.RuntimeException: Could not check sentence (language: Luganda): <sentcontent>This is a example input to to show you how LanguageTool works.</sentcontent>
+        at org.languagetool.JLanguageTool$TextCheckCallable.getOtherRuleMatches(JLanguageTool.java:2250)
+        at org.languagetool.JLanguageTool$TextCheckCallable.call(JLanguageTool.java:2107)
+        at org.languagetool.MultiThreadedJLanguageTool.lambda$2(MultiThreadedJLanguageTool.java:200)
+        at java.base/java.util.concurrent.ForkJoinTask$AdaptedCallable.exec(ForkJoinTask.java:1428)
+        at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+        at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+        at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+        at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+        at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+Caused by: java.lang.RuntimeException: Error analyzing sentence: '<S> This[This/null] is[is/null] a[a/null] example[example/null] input[input/null] to[to/null] to[to/null] show[show/null] you[you/null] how[how/null] LanguageTool[LanguageTool/null] works[works/null].[</S><P/>]' with rule EN_MULTITOKEN_SPELLING_TWO[1]
+        at org.languagetool.rules.patterns.PatternRuleMatcher.match(PatternRuleMatcher.java:100)
+        at org.languagetool.rules.patterns.PatternRule.match(PatternRule.java:218)
+        at org.languagetool.JLanguageTool.checkAnalyzedSentence(JLanguageTool.java:1602)
+        at org.languagetool.JLanguageTool$TextCheckCallable.getOtherRuleMatches(JLanguageTool.java:2206)
+        ... 8 more
+Caused by: java.lang.NullPointerException: Cannot invoke "org.languagetool.rules.spelling.SpellingCheckRule.isMisspelled(String)" because "this.spellingRule" is null
+        at org.languagetool.rules.spelling.multitoken.MultitokenSpeller.discardRunOnWords(MultitokenSpeller.java:324) 
+        at org.languagetool.rules.spelling.multitoken.MultitokenSpeller.getSuggestions(MultitokenSpeller.java:69)     
+        at org.languagetool.rules.spelling.multitoken.MultitokenSpellerFilter.acceptRuleMatch(MultitokenSpellerFilter.java:53)
+        at org.languagetool.rules.patterns.RuleFilterEvaluator.runFilter(RuleFilterEvaluator.java:46)
+        at org.languagetool.rules.patterns.PatternRuleMatcher.createRuleMatch(PatternRuleMatcher.java:192)
+        at org.languagetool.rules.patterns.PatternRuleMatcher.lambda$2(PatternRuleMatcher.java:83)
+        at org.languagetool.rules.patterns.AbstractPatternRulePerformer.matchFrom(AbstractPatternRulePerformer.java:161)
+        at org.languagetool.rules.patterns.AbstractPatternRulePerformer.doMatch(AbstractPatternRulePerformer.java:80) 
+        at org.languagetool.rules.patterns.PatternRuleMatcher.match(PatternRuleMatcher.java:82)
+        ... 11 more
+
+'''
+
+Used the command below to create a dictionary and then it was moved to the correct place
+
+'''
+java -cp "E:\languagetool\languagetool-tools\target\languagetool-tools-6.8-SNAPSHOT-jar-with-dependencies.jar" org.languagetool.tools.SpellDictionaryBuilder -i "E:\Downloads\Luganda_Dictionary.txt" --info "e:\languagetool\languagetool-language-modules\sk\src\main\resources\org\languagetool\resource\sk\slovak.info" -o "E:\tmp\Luganda.dict"
+
+'''
+
+But then I faced error  below
+''' Caused by: java.lang.RuntimeException: Cannot find dictionary file
+/org/languagetool/resource/lg/hunspell/Luganda.dict
+ '''
+
+Because in my morforlogikspellerrule.java I used
+'''
+/org/languagetool/resource/lg/hunspell/Luganda.dict
+'''
+Instead of
+'''
+/lg/hunspell/Luganda.dict
+'''
+After correcting the file path, the GUI ran without crashing but then I wasn't getting spell check even if I typed wrong words because I had forgotten to add '''new MorfologikLugandaSpellerRule(messages, this, userConfig)''' in Luganda.java   
+
+
+
+
+
 
 

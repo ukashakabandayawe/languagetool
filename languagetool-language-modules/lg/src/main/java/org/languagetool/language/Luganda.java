@@ -39,6 +39,11 @@ public class Luganda extends Language {
     return new SRXSentenceTokenizer(this);
   }
 
+  @Override
+  public org.languagetool.tokenizers.Tokenizer createDefaultWordTokenizer() {
+    return new org.languagetool.tokenizers.LugandaWordTokenizer();
+  }
+
    @Override
   public Tagger createDefaultTagger() {
     return new LugandaTagger();
@@ -79,6 +84,7 @@ public class Luganda extends Language {
         new PunctuationMarkAtParagraphEnd2(messages, this),
         new LongParagraphRule(messages, this, userConfig),
         new MorfologikLugandaSpellerRule(messages, this, userConfig),
+        new DemoRule(),
         new UppercaseSentenceStartRule(messages, this,
                 Example.wrong("Eno ennyuumba nkadde. <marker>baagiziimba</marker> mu 1950."),
                 Example.fixed("Eno ennyuumba nkadde. <marker>Baagiziimba</marker> mu 1950.")
@@ -88,8 +94,8 @@ public class Luganda extends Language {
                 Example.fixed("Twaanywedde kaawa<marker>,</marker> ammazzi ne caayi n'amata.")
             ),
         new GenericUnpairedBracketsRule(messages,
-            Arrays.asList("[", "(", "{", "«", "﴾", "\"", "'"),
-            Arrays.asList("]", ")", "}", "»", "﴿", "\"", "'"))
+            Arrays.asList("[", "(", "{", "«", "﴾", "\""),
+            Arrays.asList("]", ")", "}", "»", "﴿", "\""))
       );
   }
 

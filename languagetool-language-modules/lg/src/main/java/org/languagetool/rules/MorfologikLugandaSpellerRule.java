@@ -15,7 +15,7 @@ public class MorfologikLugandaSpellerRule extends MorfologikSpellerRule {
 
     @Override
     public String getFileName() {
-        return "/lg/hunspell/Luganda.dict";
+        return "/lg/hunspell/lg_UG.dict";
     }
 
     @Override

@@ -92,7 +92,7 @@ public class Luganda extends Language {
         new PunctuationMarkAtParagraphEnd(messages, this),
         new PunctuationMarkAtParagraphEnd2(messages, this),
         new LongParagraphRule(messages, this, userConfig),
-        spellerRule,
+        new LugandaProperNounAssumptionRule(messages, this, userConfig),
         new LugandaPossessiveSpaceRule(possessiveDictionaryLookup),
         new DemoRule(),
         new UppercaseSentenceStartRule(messages, this,

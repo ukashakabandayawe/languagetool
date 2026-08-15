@@ -1,0 +1,9 @@
+#
+# Dictionary properties.
+#
+fsa.dict.encoding=utf8
+fsa.dict.encoder=SUFFIX
+fsa.dict.input-conversion=’ '
+fsa.dict.author=Ukaasha Yawe
+fsa.dict.created=2026-08-14 
+fsa.dict.separator=+

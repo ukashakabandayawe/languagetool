@@ -29,13 +29,13 @@ public class MorfologikLugandaSpellerRule extends MorfologikSpellerRule {
         if (super.ignoreWord(word)) {
             return true;
         }
-            String[] split = PossessivePrefixes.splitPossessive(word);
-            if (split == null) {
-                return false;
-            }
-            String stem = split[1];
-            return !speller1.isMisspelled(stem);
+        String[] split = PossessivePrefixes.splitPossessive(word);
+        if (split == null) {
+            return false;
         }
+        String stem = split[1];
+        return !speller1.isMisspelled(stem);
+    }
 
     
 

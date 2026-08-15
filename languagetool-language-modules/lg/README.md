@@ -278,5 +278,15 @@ After correcting the file path, the GUI ran without crashing but then I wasn't g
 
 
 
-
+PS E:\languagetool> java "-Djava.io.tmpdir=F:\JavaTemp" -cp "$cp" org.languagetool.tools.SpellDictionaryBuilder `
+>>     -i "E:\Luganda Hunspell Dictionary\finite.txt" `
+>>     -info "E:\languagetool\languagetool-language-modules\lg\src\main\resources\org\languagetool\resource\lg\hunspell\Luganda.info" `
+>>     -o "E:\Luganda Hunspell Dictionary\lg.dict"  
+Running Morfologik FSACompile.main with these options: [--exit, false, -i, F:\JavaTemp\SpellDictionaryBuilder15091018442241335463.txt, -o, E:\Luganda Hunspell Dictionary\lg.dict, -f, CFSA2]
+Java HotSpot(TM) 64-Bit Server VM warning: INFO: os::commit_memory(0x0000000756000000, 509607936, 0) failed; error='? ??? ???? ?? ??? ??? ?? ????' (DOS error/errno=1455)
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 509607936 bytes. Error detail: G1 virtual space
+# An error report file with more information is saved as:
+# E:\languagetool\hs_err_pid27692.log
 

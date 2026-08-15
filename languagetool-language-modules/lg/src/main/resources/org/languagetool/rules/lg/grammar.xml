@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../../../../../../languagetool-core/src/main/resources/org/languagetool/rules/print.xsl" title="Pretty print" ?>
+<?xml-stylesheet type="text/css" href="../../../../../../../../../languagetool-core/src/main/resources/org/languagetool/rules/rules.css" title="Easy editing stylesheet" ?>
+<!--
+Luganda Grammar and Typo Rules for LanguageTool
+Copyright (C) 2026 Ukasha Kabanda Yawe
+
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
+-->
+<rules lang="lg" xsi:noNamespaceSchemaLocation="../../../../../../../../../languagetool-core/src/main/resources/org/languagetool/rules/rules.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- ================================================================= -->
+    <!-- EMPANDIIKA Y'OLUGANDA (LUGANDA ORTHOGRAPHY RULES)                 -->
+    <!-- ================================================================= -->
+    <category id="EMPANDIIKA_Y_OLUGANDA" name="Empandiika y'Oluganda (Orthography)">
+
+        <!-- L vs R Usage Rules in Luganda -->
+        <rulegroup id="L_VS_R_RULES" name="Enkozesa y'ennyukuta L ne R">
+            <!-- R at word start is generally invalid in Luganda -->
+            <rule>
+                <pattern>
+                    <token regexp="yes">^[Rr]adiyo$</token>
+                </pattern>
+                <message>Mu Luganda ennyukuta 'r' tetandika bigambo. Mukifo kya 'r' tukozesa 'l'. Gezaako: <suggestion><match no="1" regexp_match="^[Rr]" regexp_replace="l"/></suggestion>.</message>
+                <short>Empandiika ya L mu kifo kya R</short>
+                <example correction="ladiyo">Ggwe waguze <marker>radiyo</marker> empya.</example>
+                <example>Ggwe waguze ladiyo empya.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">^[Kk]uraba$</token>
+                </pattern>
+                <message>Mu Luganda ennyukuta 'r' tekozesebwa oluvannyuma lwa 'u': gezaako <suggestion><match no="1" regexp_match="[Rr]" regexp_replace="l"/></suggestion>.</message>
+                <short>Ennyukuta L mu kifo kya R</short>
+                <example correction="kulaba">Njagala <marker>kuraba</marker> omupiira.</example>
+                <example>Njagala kulaba mupiira.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">^[Oo]muriro$</token>
+                </pattern>
+                <message>Mu Luganda ennyukuta 'l' ekozesebwa oluvannyuma lwa 'u': wandiise <suggestion><match no="1" regexp_match="^[Oo]mu[rR]" regexp_replace="omul"/></suggestion>.</message>
+                <short>Ennyukuta L mu kifo kya R</short>
+                <example correction="omuliro">Baakuma <marker>omuriro</marker> omunene.</example>
+                <example>Baakuma omuliro ne bafumba.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">^[Bb]urungi$</token>
+                </pattern>
+                <message>Oluvannyuma lwa 'u' tukozesa 'l' so si 'r': wandiise <suggestion><match no="1" regexp_match="[Rr]" regexp_replace="l"/></suggestion>.</message>
+                <short>Ennyukuta L mu kifo kya R</short>
+                <example correction="bulungi">Okoze <marker>burungi</marker> nnyo.</example>
+                <example>Okoze bulungi nnyo.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">^[Kk]are$</token>
+                </pattern>
+                <message>Oluvannyuma lwa 'a' tukozesa 'l' so si 'r': wandiise <suggestion><match no="1" regexp_match="[Rr]" regexp_replace="l"/></suggestion>.</message>
+                <short>Ennyukuta L mu kifo kya R</short>
+                <example correction="kale">Awo <marker>kare</marker> tunaagenda enkya.</example>
+                <example>Awo kale tunaagenda enkya.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">^[Ee]linya$</token>
+                </pattern>
+                <message>Oluvannyuma lwa 'e' oba 'i' tukozesa 'r' so si 'l': wandiise <suggestion><match no="1" regexp_match="[Ll]" regexp_replace="r"/></suggestion>.</message>
+                <short>Ennyukuta R mu kifo kya L</short>
+                <example correction="Erinya"><marker>Elinya</marker> lyo ggwe ani?</example>
+                <example>Erinya lyo ggwe ani?</example>
+            </rule>
+        </rulegroup>
+
+        <!-- Consonant Gemination (Ennyukuta Enzibire) -->
+        <rulegroup id="CONSONANT_GEMINATION" name="Ennyukuta Enzibire (Gemination)">
+            <rule>
+                <pattern>
+                    <token regexp="yes">^[Ss]ebo$</token>
+                </pattern>
+                <message>Mu mpandiika y'Oluganda ey'omulembe ekigambo kino kyetaagisa ennyukuta s ebbiri: wandiise <suggestion><match no="1" regexp_match="^[Ss]" regexp_replace="ss"/></suggestion>.</message>
+                <short>Ennyukuta 'ss' enzibire</short>
+                <example correction="ssebo">Osiibye otyanno <marker>sebo</marker>?</example>
+                <example>Osiibye otyanno ssebo?</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">^[Nn]yabo$</token>
+                </pattern>
+                <message>Mu mpandiika y'Oluganda ey'omulembe ekigambo kino kyetaagisa ennyukuta nn ebbiri: wandiise <suggestion><match no="1" regexp_match="^[Nn]" regexp_replace="nn"/></suggestion>.</message>
+                <short>Ennyukuta 'nn' enzibire</short>
+                <example correction="nnyabo">Webale nnyo <marker>nyabo</marker>.</example>
+                <example>Webale nnyo nnyabo.</example>
+            </rule>
+        </rulegroup>
+
+        <!-- Common Greetings and G/J Spellings -->
+        <rulegroup id="GREETINGS_SPELLING" name="Empandiika y'Ebiramuso n'Ebigambo Ebirala">
+            <rule>
+                <pattern>
+                    <token regexp="yes">^[Jj]ebaleko$</token>
+                </pattern>
+                <message>Ekigambo kino kiwandiikibwa na 'gy' mu kifo kya 'j': wandiise <suggestion><match no="1" regexp_match="^[Jj]" regexp_replace="gy"/></suggestion>.</message>
+                <short>Empandiika ya Gyebaleko</short>
+                <example correction="gyebaleko">Bannange <marker>jebaleko</marker> emirimu.</example>
+                <example>Bannange gyebaleko emirimu.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">^[Jj]endi$</token>
+                </pattern>
+                <message>Ekigambo kino kiwandiikibwa na 'gy' mu kifo kya 'j': wandiise <suggestion><match no="1" regexp_match="^[Jj]" regexp_replace="gy"/></suggestion>.</message>
+                <short>Empandiika ya Gyendi</short>
+                <example correction="gyendi">Nze <marker>jendi</marker> bulungi.</example>
+                <example>Nze gyendi bulungi.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">^[Mm]wevale$</token>
+                </pattern>
+                <message>Ekigambo kino kiwandiikibwa na 'b' mu kifo kya 'v': wandiise <suggestion><match no="1" regexp_match="v" regexp_replace="b"/></suggestion>.</message>
+                <short>Empandiika ya Mwebale</short>
+                <example correction="mwebale">Bannange <marker>mwevale</marker> nnyo okujja.</example>
+                <example>Bannange mwebale nnyo okujja.</example>
+            </rule>
+        </rulegroup>
+
+    </category>
+
+    <!-- ================================================================= -->
+    <!-- ENKOZESA Y'AKAWUNGUKO (ELISION & CONTRACTION RULES)               -->
+    <!-- ================================================================= -->
+    <category id="ENKOZESA_Y_AKAWUNGUKO" name="Enkozesa y'Akawunguko (Elisions &amp; Contractions)">
+
+        <!-- Ne before Vowels should contract to n' -->
+        <rulegroup id="NE_BEFORE_VOWEL" name="Akatonnyeze ku 'ne' oluvannyuma lw'Enjatuza (ne -> n')">
+            <rule>
+                <pattern>
+                    <token regexp="yes">^[Nn]e$</token>
+                    <token regexp="yes">^[aeiouAEIOU].*</token>
+                </pattern>
+                <message>Ekigatta 'ne' kisalwako ne kifuuka 'n\'' nga kigattiddwa ku kigambo ekitandika n'enjatuza: wandiise <suggestion>n'\2</suggestion>.</message>
+                <short>Kozesa n' mu kifo kya ne mu maaso g'enjatuza</short>
+                <example correction="n'amata">Twayagala caayi <marker>ne amata</marker>.</example>
+                <example>Twayagala caayi n'amata.</example>
+            </rule>
+        </rulegroup>
+
+        <!-- Missing apostrophe in velar nasal digraph ng' -->
+        <rulegroup id="NG_DIGRAPH_APOSTROPHE" name="Akatonnyeze mu Nnyukuta ng'">
+            <rule>
+                <pattern>
+                    <token regexp="yes">^[Ee]ngaano$</token>
+                </pattern>
+                <message>Ekigambo kino kyetaagisa akatonnyeze (apostrophe) mu nnyukuta ey'empewo 'ng\'': wandiise <suggestion>eng'aano</suggestion>.</message>
+                <short>Akatonnyeze mu ng'aano</short>
+                <example correction="eng'aano">Twaguze <marker>engaano</marker> enkya.</example>
+                <example>Twaguze eng'aano enkya.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">^[Ee]ngaali$</token>
+                </pattern>
+                <message>Ekigambo kino kyetaagisa akatonnyeze ku 'ng\'': wandiise <suggestion>eng'aali</suggestion>.</message>
+                <short>Akatonnyeze mu eng'aali</short>
+                <example correction="eng'aali">Twalabye <marker>engaali</marker> ku nnyanja.</example>
+                <example>Twalabye eng'aali ku nnyanja.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">^[Ee]nguumi$</token>
+                </pattern>
+                <message>Ekigambo kino kyetaagisa akatonnyeze ku 'ng\'': wandiise <suggestion>eng'uumi</suggestion>.</message>
+                <short>Akatonnyeze mu eng'uumi</short>
+                <example correction="eng'uumi">Yamusaze <marker>enguumi</marker> emu.</example>
+                <example>Yamusaze eng'uumi emu.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">^[Ee]ngamiya$</token>
+                </pattern>
+                <message>Ekigambo kino kyetaagisa akatonnyeze ku 'ng\'': wandiise <suggestion>eng'amiya</suggestion>.</message>
+                <short>Akatonnyeze mu eng'amiya</short>
+                <example correction="eng'amiya">Eyo ye <marker>engamiya</marker> ey'omu ddungu.</example>
+                <example>Eyo ye eng'amiya ey'omu ddungu.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">^[Ee]bbiringanya$</token>
+                </pattern>
+                <message>Ekigambo kino kyetaagisa akatonnyeze ku 'ng\'': wandiise <suggestion>ebbiring'anya</suggestion>.</message>
+                <short>Akatonnyeze mu ebbiring'anya</short>
+                <example correction="ebbiring'anya">Twafumbye <marker>ebbiringanya</marker> ku mmere.</example>
+                <example>Twafumbye ebbiring'anya ku mmere.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">^[Kk]ungaanya$</token>
+                </pattern>
+                <message>Ekigambo kino kyetaagisa akatonnyeze ku 'ng\'': wandiise <suggestion>kung'aanya</suggestion>.</message>
+                <short>Akatonnyeze mu kung'aanya</short>
+                <example correction="kung'aanya">Tulina <marker>kungaanya</marker> ssente.</example>
+                <example>Tulina kung'aanya ssente.</example>
+            </rule>
+        </rulegroup>
+
+        <!-- Bwe ne elision -->
+        <rulegroup id="BWE_NE_CONTRACTION" name="Bwe ne -> bwe n'">
+            <rule>
+                <pattern>
+                    <token regexp="yes">^[Bb]we$</token>
+                    <token>ne</token>
+                </pattern>
+                <message>Kozesa 'bwe n\'' nga wegatta ku kigambo ekiddako: <suggestion>bwe n'</suggestion>.</message>
+                <short>Kozesa bwe n'</short>
+                <example correction="bwe n'">Awo <marker>bwe ne</marker> agenda teyamulaba.</example>
+                <example>Awo bwe n'agenda teyamulaba.</example>
+            </rule>
+        </rulegroup>
+
+    </category>
+
+    <!-- ================================================================= -->
+    <!-- EBIGAMBO EBITERA OKUKYAMIZIBWA (COMMONLY CONFUSED WORDS)         -->
+    <!-- ================================================================= -->
+    <category id="EBIGAMBO_EBITERA_OKUKYAMIZIBWA" name="Ebigambo Ebitera Okukyamizibwa (Common Confusions)">
+
+        <!-- Kulwokuba / Lwa kuba -->
+        <rulegroup id="KU_LW_OKUBA_SPLIT" name="Empandiika ya ku lw'okuba">
+            <rule>
+                <pattern>
+                    <token regexp="yes">^[Kk]ulwokuba$</token>
+                </pattern>
+                <message>Ebigambo bino byawulwamu era biteekebwako akatonnyeze: wandiise <suggestion>ku lw'okuba</suggestion> oba <suggestion>kubanga</suggestion>.</message>
+                <short>Empandiika ya ku lw'okuba</short>
+                <example correction="ku lw'okuba|kubanga">Tetwazze <marker>kulwokuba</marker> enkuba yatonnye.</example>
+                <example>Tetwazze ku lw'okuba enkuba yatonnye.</example>
+            </rule>
+        </rulegroup>
+
+        <!-- Bulijjo spelling -->
+        <rulegroup id="BULIJJO_SPELLING" name="Empandiika ya bulijjo">
+            <rule>
+                <pattern>
+                    <token regexp="yes">^[Bb]uli$</token>
+                    <token regexp="yes">^[Jj]jo$</token>
+                </pattern>
+                <message>Ekigambo kino kiwandiikibwa wamu: wandiise <suggestion>bulijjo</suggestion>.</message>
+                <short>Empandiika ya bulijjo</short>
+                <example correction="bulijjo">Nze nkola ekyo <marker>buli jjo</marker>.</example>
+                <example>Nze nkola ekyo bulijjo.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">^[Bb]urijjo$</token>
+                </pattern>
+                <message>Oluvannyuma lwa 'u' tukozesa 'l': wandiise <suggestion>bulijjo</suggestion>.</message>
+                <short>Empandiika ya bulijjo</short>
+                <example correction="bulijjo">Tukola tutyo <marker>burijjo</marker>.</example>
+                <example>Tukola tutyo bulijjo.</example>
+            </rule>
+        </rulegroup>
+
+        <!-- Nga bwe split -->
+        <rulegroup id="NGA_BWE_SPLIT" name="Nga bwe">
+            <rule>
+                <pattern>
+                    <token regexp="yes">^[Nn]gabwe$</token>
+                </pattern>
+                <message>Ebigambo bino biwandiikibwa byawuddwamu: wandiise <suggestion>nga bwe</suggestion>.</message>
+                <short>Empandiika ya nga bwe</short>
+                <example correction="nga bwe">Kiri <marker>ngabwe</marker> twakimanyi.</example>
+                <example>Kiri nga bwe twakimanyi.</example>
+            </rule>
+        </rulegroup>
+
+        <!-- Kale nno split -->
+        <rulegroup id="KALE_NNO_SPLIT" name="Kale nno">
+            <rule>
+                <pattern>
+                    <token regexp="yes">^[Kk]alenno$</token>
+                </pattern>
+                <message>Ebigambo bino biwandiikibwa byawuddwamu: wandiise <suggestion>kale nno</suggestion>.</message>
+                <short>Empandiika ya kale nno</short>
+                <example correction="kale nno">Awo <marker>kalenno</marker> ka tugende.</example>
+                <example>Awo kale nno ka tugende.</example>
+            </rule>
+        </rulegroup>
+
+        <!-- Oli otya greeting -->
+        <rulegroup id="OLI_OTYA_SPELLING" name="Oli otya">
+            <rule>
+                <pattern>
+                    <token regexp="yes">^[Oo]li$</token>
+                    <token regexp="yes">^[Oo]tyo$</token>
+                </pattern>
+                <message>Mu kubuuza olw'omulembe tugamba: <suggestion>oli otya</suggestion>.</message>
+                <short>Empandiika ya oli otya</short>
+                <example correction="oli otya">Munno <marker>oli otyo</marker>?</example>
+                <example>Munno oli otya?</example>
+            </rule>
+        </rulegroup>
+
+    </category>
+
+    <!-- ================================================================= -->
+    <!-- OKUDDANG'ANA KW'EBIGAMBO (WORD REPETITION & REDUNDANCY)           -->
+    <!-- ================================================================= -->
+    <category id="OKUDDANG_ANA_KW_EBIGAMBO" name="Okuddang'ana kw'Ebigambo (Redundancy)">
+
+        <!-- Ate era redundancy -->
+        <rulegroup id="ATE_ERA_REDUNDANCY" name="Ate era (Redundancy)">
+            <rule>
+                <pattern>
+                    <token regexp="yes">^[Aa]te$</token>
+                    <token>era</token>
+                </pattern>
+                <message>Ebigambo 'ate era' biddamu amakulu ge gamu. Kozesa kimu ku bino: <suggestion>ate</suggestion> oba <suggestion>era</suggestion>.</message>
+                <short>Okuddang'ana kw'ebigambo 'ate era'</short>
+                <example correction="ate|era">Yazze <marker>ate era</marker> n'atwaala ebintu.</example>
+                <example>Yazze era n'atwaala ebintu.</example>
+            </rule>
+        </rulegroup>
+
+        <!-- Repeated Connectors -->
+        <rulegroup id="REPEATED_CONNECTORS" name="Okuddiŋŋana kw'ebigambo ebigatta">
+            <rule>
+                <pattern>
+                    <token regexp="yes">^[Kk]ubanga$</token>
+                    <token regexp="yes">^[Kk]ubanga$</token>
+                </pattern>
+                <message>Ekigambo kino kiddiddwamu. Wandiise lumu: <suggestion>kubanga</suggestion>.</message>
+                <short>Okuddiŋŋana kwa 'kubanga'</short>
+                <example correction="kubanga">Tetwazze <marker>kubanga kubanga</marker> twabadde tulwade.</example>
+                <example>Tetwazze kubanga twabadde tulwade.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">^[Ee]ra$</token>
+                    <token regexp="yes">^[Ee]ra$</token>
+                </pattern>
+                <message>Ekigambo kino kiddiddwamu. Wandiise lumu: <suggestion>era</suggestion>.</message>
+                <short>Okuddiŋŋana kwa 'era'</short>
+                <example correction="era">Twasanyuse <marker>era era</marker> ne tuyimba.</example>
+                <example>Twasanyuse era ne tuyimba.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">^[Nn]ga$</token>
+                    <token regexp="yes">^[Nn]ga$</token>
+                </pattern>
+                <message>Ekigambo kino kiddiddwamu. Wandiise lumu: <suggestion>nga</suggestion>.</message>
+                <short>Okuddiŋŋana kwa 'nga'</short>
+                <example correction="nga">Yali akola <marker>nga nga</marker> bwe baamulagira.</example>
+                <example>Yali akola nga bwe baamulagira.</example>
+            </rule>
+        </rulegroup>
+
+    </category>
+
+</rules>

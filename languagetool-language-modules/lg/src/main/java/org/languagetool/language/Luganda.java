@@ -49,8 +49,6 @@ public class Luganda extends Language {
     return new LugandaTagger();
   }
 
-  // Removed broken override for getRelevantRules()
-
   @Override
   public String[] getCountries() {
     // Luganda is primarily spoken in Uganda

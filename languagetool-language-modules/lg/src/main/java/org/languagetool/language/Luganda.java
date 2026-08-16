@@ -44,7 +44,7 @@ public class Luganda extends Language {
     return new org.languagetool.tokenizers.LugandaWordTokenizer();
   }
 
-  @Override
+   @Override
   public Tagger createDefaultTagger() {
     return new LugandaTagger();
   }
@@ -73,30 +73,6 @@ public class Luganda extends Language {
   public List<Rule> getRelevantRules(ResourceBundle messages, UserConfig userConfig, Language language,
       List<Language> altLanguages)
       throws IOException {
-    MorfologikLugandaSpellerRule spellerRule = new MorfologikLugandaSpellerRule(messages, this, userConfig);
-
-    DictionaryLookup possessiveDictionaryLookup = word -> {
-      try {
-        return spellerRule.isKnownWord(word);
-      } catch (IOException e) {
-        return false; // fail closed: if the speller can't be checked, don't force a merge
-      }
-    };
-   LugandaPossessiveRules possessiveRules =
-    new LugandaPossessiveRules(
-        messages,
-        this,
-        userConfig
-    );
-
-    LugandaProperNounAssumptionRule properNounRule =
-    new LugandaProperNounAssumptionRule(
-        messages,
-        this,
-        userConfig,
-        spellerRule
-    );
-
     return Arrays.asList(
         new EmptyLineRule(messages, this),
         new MultipleWhitespaceRule(messages, this),
@@ -107,21 +83,20 @@ public class Luganda extends Language {
         new PunctuationMarkAtParagraphEnd(messages, this),
         new PunctuationMarkAtParagraphEnd2(messages, this),
         new LongParagraphRule(messages, this, userConfig),
-        spellerRule,
-        //properNounRule,
-        possessiveRules,
-        //new LugandaSpellerRule(messages, this, userConfig),
-        //new LugandaPossessiveSpaceRule(possessiveDictionaryLookup),
+        new MorfologikLugandaSpellerRule(messages, this, userConfig),
         new DemoRule(),
         new UppercaseSentenceStartRule(messages, this,
-            Example.wrong("Eno ennyuumba nkadde. <marker>baagiziimba</marker> mu 1950."),
-            Example.fixed("Eno ennyuumba nkadde. <marker>Baagiziimba</marker> mu 1950.")),
+                Example.wrong("Eno ennyuumba nkadde. <marker>baagiziimba</marker> mu 1950."),
+                Example.fixed("Eno ennyuumba nkadde. <marker>Baagiziimba</marker> mu 1950.")
+            ),
         new CommaWhitespaceRule(messages,
-            Example.wrong("Twaanywedde kaawa<marker> ,</marker> ammazzi ne caayi n'amata."),
-            Example.fixed("Twaanywedde kaawa<marker>,</marker> ammazzi ne caayi n'amata.")),
+                Example.wrong("Twaanywedde kaawa<marker> ,</marker> ammazzi ne caayi n'amata."),
+                Example.fixed("Twaanywedde kaawa<marker>,</marker> ammazzi ne caayi n'amata.")
+            ),
         new GenericUnpairedBracketsRule(messages,
             Arrays.asList("[", "(", "{", "«", "﴾", "\""),
-            Arrays.asList("]", ")", "}", "»", "﴿", "\"")));
+            Arrays.asList("]", ")", "}", "»", "﴿", "\""))
+      );
   }
 
   @Override

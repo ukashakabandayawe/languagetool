@@ -9,8 +9,12 @@ import org.languagetool.UserConfig;
 
 public class MorfologikLugandaSpellerRule extends MorfologikSpellerRule {
 
-    public MorfologikLugandaSpellerRule(ResourceBundle messages, Language language, UserConfig userConfig)
+    public MorfologikLugandaSpellerRule(
+            ResourceBundle messages,
+            Language language,
+            UserConfig userConfig)
             throws IOException {
+
         super(messages, language, userConfig);
     }
 
@@ -26,21 +30,29 @@ public class MorfologikLugandaSpellerRule extends MorfologikSpellerRule {
 
     @Override
     protected boolean ignoreWord(String word) throws IOException {
+
         if (super.ignoreWord(word)) {
             return true;
         }
-        String[] split = PossessivePrefixes.splitPossessive(word);
-        if (split == null) {
-            return false;
-        }
-        String stem = split[1];
-        return !speller1.isMisspelled(stem);
-    }
 
-    
+        return isValidPossessive(word);
+    }
 
     public boolean isKnownWord(String word) throws IOException {
         return !speller1.isMisspelled(word);
     }
 
+    public boolean isValidPossessive(String word) throws IOException {
+
+        String[] split =
+                PossessivePrefixes.splitPossessive(word);
+
+        if (split == null) {
+            return false;
+        }
+
+        String stem = split[1];
+
+        return !speller1.isMisspelled(stem);
+    }
 }

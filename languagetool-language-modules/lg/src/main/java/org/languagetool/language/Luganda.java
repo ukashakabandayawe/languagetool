@@ -82,6 +82,21 @@ public class Luganda extends Language {
         return false; // fail closed: if the speller can't be checked, don't force a merge
       }
     };
+   LugandaPossessiveRules possessiveRules =
+    new LugandaPossessiveRules(
+        messages,
+        this,
+        userConfig
+    );
+
+    LugandaProperNounAssumptionRule properNounRule =
+    new LugandaProperNounAssumptionRule(
+        messages,
+        this,
+        userConfig,
+        spellerRule
+    );
+
     return Arrays.asList(
         new EmptyLineRule(messages, this),
         new MultipleWhitespaceRule(messages, this),
@@ -92,8 +107,11 @@ public class Luganda extends Language {
         new PunctuationMarkAtParagraphEnd(messages, this),
         new PunctuationMarkAtParagraphEnd2(messages, this),
         new LongParagraphRule(messages, this, userConfig),
-        new LugandaProperNounAssumptionRule(messages, this, userConfig),
-        new LugandaPossessiveSpaceRule(possessiveDictionaryLookup),
+        spellerRule,
+        //properNounRule,
+        possessiveRules,
+        //new LugandaSpellerRule(messages, this, userConfig),
+        //new LugandaPossessiveSpaceRule(possessiveDictionaryLookup),
         new DemoRule(),
         new UppercaseSentenceStartRule(messages, this,
             Example.wrong("Eno ennyuumba nkadde. <marker>baagiziimba</marker> mu 1950."),

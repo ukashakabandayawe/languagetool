@@ -25,6 +25,17 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     <!-- EMPANDIIKA Y'OLUGANDA (LUGANDA ORTHOGRAPHY RULES)                 -->
     <!-- ================================================================= -->
     <category id="EMPANDIIKA_Y_OLUGANDA" name="Empandiika y'Oluganda (Orthography)">
+        <!-- Gibberish -->
+        <rulegroup id="GIBBERISH" name="Gibberish">
+            <rule>
+                <pattern>
+                <token regexp="yes">[aeiouAEIOU]{5,}|[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]{5,}</token>                </pattern>
+                <message>Ekigambo kirabika kifu.</message>
+                <short>Ekigambo ekifu</short>
+                <example correction="">Oyo muntu <marker>eftewgf</marker> mukulu.</example>
+                <example>Oyo muntu mukulu.</example>
+            </rule>
+        </rulegroup>
 
         <!-- L vs R Usage Rules in Luganda -->
         <rulegroup id="L_VS_R_RULES" name="Enkozesa y'ennyukuta L ne R">
@@ -51,16 +62,16 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                     <token regexp="yes">^[Oo]muriro$</token>
                 </pattern>
-                <message>Mu Luganda ennyukuta 'l' ekozesebwa oluvannyuma lwa 'u': wandiise <suggestion><match no="1" regexp_match="^[Oo]mu[rR]" regexp_replace="omul"/></suggestion>.</message>
+                <message>Mu Luganda ennyukuta 'l' ekozesebwa oluvannyuma lwa 'u': Gezaako <suggestion><match no="1" regexp_match="^[Oo]mu[rR]" regexp_replace="omul"/></suggestion>.</message>
                 <short>Ennyukuta L mu kifo kya R</short>
-                <example correction="omuliro">Baakuma <marker>omuriro</marker> omunene.</example>
+                <example correction="omuliro">Baakuma <marker>omuriro</marker> ne bafumba.</example>
                 <example>Baakuma omuliro ne bafumba.</example>
             </rule>
             <rule>
                 <pattern>
                     <token regexp="yes">^[Bb]urungi$</token>
                 </pattern>
-                <message>Oluvannyuma lwa 'u' tukozesa 'l' so si 'r': wandiise <suggestion><match no="1" regexp_match="[Rr]" regexp_replace="l"/></suggestion>.</message>
+                <message>Oluvannyuma lwa 'u' tukozesa 'l' sso ssi 'r': Gezaako <suggestion><match no="1" regexp_match="[Rr]" regexp_replace="l"/></suggestion>.</message>
                 <short>Ennyukuta L mu kifo kya R</short>
                 <example correction="bulungi">Okoze <marker>burungi</marker> nnyo.</example>
                 <example>Okoze bulungi nnyo.</example>
@@ -69,7 +80,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                     <token regexp="yes">^[Kk]are$</token>
                 </pattern>
-                <message>Oluvannyuma lwa 'a' tukozesa 'l' so si 'r': wandiise <suggestion><match no="1" regexp_match="[Rr]" regexp_replace="l"/></suggestion>.</message>
+                <message>Oluvannyuma lwa 'a' tukozesa 'l' so si 'r': Gezaako <suggestion><match no="1" regexp_match="[Rr]" regexp_replace="l"/></suggestion>.</message>
                 <short>Ennyukuta L mu kifo kya R</short>
                 <example correction="kale">Awo <marker>kare</marker> tunaagenda enkya.</example>
                 <example>Awo kale tunaagenda enkya.</example>
@@ -78,10 +89,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                     <token regexp="yes">^[Ee]linya$</token>
                 </pattern>
-                <message>Oluvannyuma lwa 'e' oba 'i' tukozesa 'r' so si 'l': wandiise <suggestion><match no="1" regexp_match="[Ll]" regexp_replace="r"/></suggestion>.</message>
+                <message>Oluvannyuma lwa 'e' oba 'i' tukozesa 'r' so si 'l': Gezaako <suggestion><match no="1" regexp_match="[Ll]" regexp_replace="r"/></suggestion>.</message>
                 <short>Ennyukuta R mu kifo kya L</short>
-                <example correction="Erinya"><marker>Elinya</marker> lyo ggwe ani?</example>
-                <example>Erinya lyo ggwe ani?</example>
+                <example correction="Erinnya"><marker>Elinya</marker> lyo ggwe ani?</example>
+                <example>Erinnya lyo ggwe ani?</example>
             </rule>
         </rulegroup>
 
@@ -91,7 +102,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                     <token regexp="yes">^[Ss]ebo$</token>
                 </pattern>
-                <message>Mu mpandiika y'Oluganda ey'omulembe ekigambo kino kyetaagisa ennyukuta s ebbiri: wandiise <suggestion><match no="1" regexp_match="^[Ss]" regexp_replace="ss"/></suggestion>.</message>
+                <message>Mu mpandiika y'Oluganda entongole ekigambo kino kyetaagisa ennyukuta s ebbiri: Gezaako <suggestion><match no="1" regexp_match="^[Ss]" regexp_replace="ss"/></suggestion>.</message>
                 <short>Ennyukuta 'ss' enzibire</short>
                 <example correction="ssebo">Osiibye otyanno <marker>sebo</marker>?</example>
                 <example>Osiibye otyanno ssebo?</example>
@@ -100,7 +111,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                     <token regexp="yes">^[Nn]yabo$</token>
                 </pattern>
-                <message>Mu mpandiika y'Oluganda ey'omulembe ekigambo kino kyetaagisa ennyukuta nn ebbiri: wandiise <suggestion><match no="1" regexp_match="^[Nn]" regexp_replace="nn"/></suggestion>.</message>
+                <message>Mu mpandiika y'Oluganda entongole ekigambo kino kyetaagisa ennyukuta nn ebbiri: Gezaako <suggestion><match no="1" regexp_match="^[Nn]" regexp_replace="nn"/></suggestion>.</message>
                 <short>Ennyukuta 'nn' enzibire</short>
                 <example correction="nnyabo">Webale nnyo <marker>nyabo</marker>.</example>
                 <example>Webale nnyo nnyabo.</example>
@@ -113,37 +124,37 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                     <token regexp="yes">^[Jj]ebaleko$</token>
                 </pattern>
-                <message>Ekigambo kino kiwandiikibwa na 'gy' mu kifo kya 'j': wandiise <suggestion><match no="1" regexp_match="^[Jj]" regexp_replace="gy"/></suggestion>.</message>
+                <message>Ekigambo kino kiwandiikibwa na 'gy' mu kifo kya 'j': Gezaako <suggestion><match no="1" regexp_match="^[Jj]" regexp_replace="gy"/></suggestion>.</message>
                 <short>Empandiika ya Gyebaleko</short>
-                <example correction="gyebaleko">Bannange <marker>jebaleko</marker> emirimu.</example>
-                <example>Bannange gyebaleko emirimu.</example>
+                <example correction="gyebaleko">Bannange <marker>mujebaleko</marker>.</example>
+                <example>Bannange mugyebaleko.</example>
             </rule>
             <rule>
                 <pattern>
                     <token regexp="yes">^[Jj]endi$</token>
                 </pattern>
-                <message>Ekigambo kino kiwandiikibwa na 'gy' mu kifo kya 'j': wandiise <suggestion><match no="1" regexp_match="^[Jj]" regexp_replace="gy"/></suggestion>.</message>
+                <message>Ekigambo kino kiwandiikibwa na 'gy' mu kifo kya 'j': Gezaako <suggestion><match no="1" regexp_match="^[Jj]" regexp_replace="gy"/></suggestion>.</message>
                 <short>Empandiika ya Gyendi</short>
-                <example correction="gyendi">Nze <marker>jendi</marker> bulungi.</example>
-                <example>Nze gyendi bulungi.</example>
+                <example correction="gyendi">Nze <marker>jendi</marker>.</example>
+                <example>Nze gyendi.</example>
             </rule>
             <rule>
                 <pattern>
                     <token regexp="yes">^[Mm]wevale$</token>
                 </pattern>
-                <message>Ekigambo kino kiwandiikibwa na 'b' mu kifo kya 'v': wandiise <suggestion><match no="1" regexp_match="v" regexp_replace="b"/></suggestion>.</message>
+                <message>Ekigambo kino kiwandiikibwa na 'b' mu kifo kya 'v': Gezaako <suggestion><match no="1" regexp_match="v" regexp_replace="b"/></suggestion>.</message>
                 <short>Empandiika ya Mwebale</short>
-                <example correction="mwebale">Bannange <marker>mwevale</marker> nnyo okujja.</example>
-                <example>Bannange mwebale nnyo okujja.</example>
+                <example correction="mwebale">Bannange <marker>mwevale</marker> okujja.</example>
+                <example>Bannange mwebale okujja.</example>
             </rule>
         </rulegroup>
 
     </category>
 
     <!-- ================================================================= -->
-    <!-- ENKOZESA Y'AKAWUNGUKO (ELISION & CONTRACTION RULES)               -->
+    <!--                ELISION & CONTRACTION RULES                        -->
     <!-- ================================================================= -->
-    <category id="ENKOZESA_Y_AKAWUNGUKO" name="Enkozesa y'Akawunguko (Elisions &amp; Contractions)">
+    <category id="ELISION" name="Elisions and Contractions">
 
         <!-- Ne before Vowels should contract to n' -->
         <rulegroup id="NE_BEFORE_VOWEL" name="Akatonnyeze ku 'ne' oluvannyuma lw'Enjatuza (ne -> n')">
@@ -152,9 +163,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token regexp="yes">^[Nn]e$</token>
                     <token regexp="yes">^[aeiouAEIOU].*</token>
                 </pattern>
-                <message>Ekigatta 'ne' kisalwako ne kifuuka 'n\'' nga kigattiddwa ku kigambo ekitandika n'enjatuza: wandiise <suggestion>n'\2</suggestion>.</message>
+                <message>Ekigambo "ne" kisalwako ne kifuuka "n" nga kigattiddwa ku kigambo ekitandika n'enjatuza: Gezaako <suggestion>n'</suggestion>.</message>
                 <short>Kozesa n' mu kifo kya ne mu maaso g'enjatuza</short>
-                <example correction="n'amata">Twayagala caayi <marker>ne amata</marker>.</example>
+                <example correction="n'">Twagala caayi <marker>ne </marker>amata.</example>
                 <example>Twayagala caayi n'amata.</example>
             </rule>
         </rulegroup>
@@ -165,7 +176,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                     <token regexp="yes">^[Ee]ngaano$</token>
                 </pattern>
-                <message>Ekigambo kino kyetaagisa akatonnyeze (apostrophe) mu nnyukuta ey'empewo 'ng\'': wandiise <suggestion>eng'aano</suggestion>.</message>
+                <message>Ekigambo kino kyetaagisa akatonnyeze (apostrophe) mu nnyukuta ey'empewo 'ng\'': Gezaako <suggestion>eng'aano</suggestion>.</message>
                 <short>Akatonnyeze mu ng'aano</short>
                 <example correction="eng'aano">Twaguze <marker>engaano</marker> enkya.</example>
                 <example>Twaguze eng'aano enkya.</example>
@@ -174,7 +185,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                     <token regexp="yes">^[Ee]ngaali$</token>
                 </pattern>
-                <message>Ekigambo kino kyetaagisa akatonnyeze ku 'ng\'': wandiise <suggestion>eng'aali</suggestion>.</message>
+                <message>Ekigambo kino kyetaagisa akatonnyeze ku 'ng\'': Gezaako <suggestion>eng'aali</suggestion>.</message>
                 <short>Akatonnyeze mu eng'aali</short>
                 <example correction="eng'aali">Twalabye <marker>engaali</marker> ku nnyanja.</example>
                 <example>Twalabye eng'aali ku nnyanja.</example>
@@ -183,7 +194,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                     <token regexp="yes">^[Ee]nguumi$</token>
                 </pattern>
-                <message>Ekigambo kino kyetaagisa akatonnyeze ku 'ng\'': wandiise <suggestion>eng'uumi</suggestion>.</message>
+                <message>Ekigambo kino kyetaagisa akatonnyeze ku 'ng\'': Gezaako <suggestion>eng'uumi</suggestion>.</message>
                 <short>Akatonnyeze mu eng'uumi</short>
                 <example correction="eng'uumi">Yamusaze <marker>enguumi</marker> emu.</example>
                 <example>Yamusaze eng'uumi emu.</example>
@@ -192,7 +203,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                     <token regexp="yes">^[Ee]ngamiya$</token>
                 </pattern>
-                <message>Ekigambo kino kyetaagisa akatonnyeze ku 'ng\'': wandiise <suggestion>eng'amiya</suggestion>.</message>
+                <message>Ekigambo kino kyetaagisa akatonnyeze ku 'ng\'': Gezaako <suggestion>eng'amiya</suggestion>.</message>
                 <short>Akatonnyeze mu eng'amiya</short>
                 <example correction="eng'amiya">Eyo ye <marker>engamiya</marker> ey'omu ddungu.</example>
                 <example>Eyo ye eng'amiya ey'omu ddungu.</example>
@@ -201,7 +212,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                     <token regexp="yes">^[Ee]bbiringanya$</token>
                 </pattern>
-                <message>Ekigambo kino kyetaagisa akatonnyeze ku 'ng\'': wandiise <suggestion>ebbiring'anya</suggestion>.</message>
+                <message>Ekigambo kino kyetaagisa akatonnyeze ku 'ng\'': Gezaako <suggestion>ebbiring'anya</suggestion>.</message>
                 <short>Akatonnyeze mu ebbiring'anya</short>
                 <example correction="ebbiring'anya">Twafumbye <marker>ebbiringanya</marker> ku mmere.</example>
                 <example>Twafumbye ebbiring'anya ku mmere.</example>
@@ -210,7 +221,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                     <token regexp="yes">^[Kk]ungaanya$</token>
                 </pattern>
-                <message>Ekigambo kino kyetaagisa akatonnyeze ku 'ng\'': wandiise <suggestion>kung'aanya</suggestion>.</message>
+                <message>Ekigambo kino kyetaagisa akatonnyeze ku 'ng\'': Gezaako <suggestion>kung'aanya</suggestion>.</message>
                 <short>Akatonnyeze mu kung'aanya</short>
                 <example correction="kung'aanya">Tulina <marker>kungaanya</marker> ssente.</example>
                 <example>Tulina kung'aanya ssente.</example>
@@ -244,7 +255,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                     <token regexp="yes">^[Kk]ulwokuba$</token>
                 </pattern>
-                <message>Ebigambo bino byawulwamu era biteekebwako akatonnyeze: wandiise <suggestion>ku lw'okuba</suggestion> oba <suggestion>kubanga</suggestion>.</message>
+                <message>Ebigambo bino byawulwamu era biteekebwako akatonnyeze: Gezaako <suggestion>ku lw'okuba</suggestion> oba <suggestion>kubanga</suggestion>.</message>
                 <short>Empandiika ya ku lw'okuba</short>
                 <example correction="ku lw'okuba|kubanga">Tetwazze <marker>kulwokuba</marker> enkuba yatonnye.</example>
                 <example>Tetwazze ku lw'okuba enkuba yatonnye.</example>
@@ -258,7 +269,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token regexp="yes">^[Bb]uli$</token>
                     <token regexp="yes">^[Jj]jo$</token>
                 </pattern>
-                <message>Ekigambo kino kiwandiikibwa wamu: wandiise <suggestion>bulijjo</suggestion>.</message>
+                <message>Ekigambo kino kiwandiikibwa wamu: Gezaako <suggestion>bulijjo</suggestion>.</message>
                 <short>Empandiika ya bulijjo</short>
                 <example correction="bulijjo">Nze nkola ekyo <marker>buli jjo</marker>.</example>
                 <example>Nze nkola ekyo bulijjo.</example>
@@ -267,7 +278,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                     <token regexp="yes">^[Bb]urijjo$</token>
                 </pattern>
-                <message>Oluvannyuma lwa 'u' tukozesa 'l': wandiise <suggestion>bulijjo</suggestion>.</message>
+                <message>Oluvannyuma lwa 'u' tukozesa 'l': Gezaako <suggestion>bulijjo</suggestion>.</message>
                 <short>Empandiika ya bulijjo</short>
                 <example correction="bulijjo">Tukola tutyo <marker>burijjo</marker>.</example>
                 <example>Tukola tutyo bulijjo.</example>
@@ -280,7 +291,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                     <token regexp="yes">^[Nn]gabwe$</token>
                 </pattern>
-                <message>Ebigambo bino biwandiikibwa byawuddwamu: wandiise <suggestion>nga bwe</suggestion>.</message>
+                <message>Ebigambo bino biwandiikibwa byawuddwamu: Gezaako <suggestion>nga bwe</suggestion>.</message>
                 <short>Empandiika ya nga bwe</short>
                 <example correction="nga bwe">Kiri <marker>ngabwe</marker> twakimanyi.</example>
                 <example>Kiri nga bwe twakimanyi.</example>
@@ -293,7 +304,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                     <token regexp="yes">^[Kk]alenno$</token>
                 </pattern>
-                <message>Ebigambo bino biwandiikibwa byawuddwamu: wandiise <suggestion>kale nno</suggestion>.</message>
+                <message>Ebigambo bino biwandiikibwa byawuddwamu: Gezaako <suggestion>kale nno</suggestion>.</message>
                 <short>Empandiika ya kale nno</short>
                 <example correction="kale nno">Awo <marker>kalenno</marker> ka tugende.</example>
                 <example>Awo kale nno ka tugende.</example>
@@ -342,7 +353,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token regexp="yes">^[Kk]ubanga$</token>
                     <token regexp="yes">^[Kk]ubanga$</token>
                 </pattern>
-                <message>Ekigambo kino kiddiddwamu. Wandiise lumu: <suggestion>kubanga</suggestion>.</message>
+                <message>Ekigambo kino kiddiddwamu. Gezaako lumu: <suggestion>kubanga</suggestion>.</message>
                 <short>Okuddiŋŋana kwa 'kubanga'</short>
                 <example correction="kubanga">Tetwazze <marker>kubanga kubanga</marker> twabadde tulwade.</example>
                 <example>Tetwazze kubanga twabadde tulwade.</example>
@@ -352,7 +363,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token regexp="yes">^[Ee]ra$</token>
                     <token regexp="yes">^[Ee]ra$</token>
                 </pattern>
-                <message>Ekigambo kino kiddiddwamu. Wandiise lumu: <suggestion>era</suggestion>.</message>
+                <message>Ekigambo kino kiddiddwamu. Gezaako lumu: <suggestion>era</suggestion>.</message>
                 <short>Okuddiŋŋana kwa 'era'</short>
                 <example correction="era">Twasanyuse <marker>era era</marker> ne tuyimba.</example>
                 <example>Twasanyuse era ne tuyimba.</example>
@@ -362,7 +373,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token regexp="yes">^[Nn]ga$</token>
                     <token regexp="yes">^[Nn]ga$</token>
                 </pattern>
-                <message>Ekigambo kino kiddiddwamu. Wandiise lumu: <suggestion>nga</suggestion>.</message>
+                <message>Ekigambo kino kiddiddwamu. Gezaako lumu: <suggestion>nga</suggestion>.</message>
                 <short>Okuddiŋŋana kwa 'nga'</short>
                 <example correction="nga">Yali akola <marker>nga nga</marker> bwe baamulagira.</example>
                 <example>Yali akola nga bwe baamulagira.</example>
@@ -370,5 +381,4 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
 
     </category>
-
 </rules>

@@ -2,7 +2,6 @@ package org.languagetool.rules;
 
 import java.util.ResourceBundle;
 
-import org.languagetool.Language;
 import org.languagetool.UserConfig;
 import org.languagetool.language.Luganda;
 import org.languagetool.rules.spelling.hunspell.HunspellRule;

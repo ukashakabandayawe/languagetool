@@ -81,7 +81,7 @@ public class Luganda extends Language {
         new PunctuationMarkAtParagraphEnd(messages, this),
         new PunctuationMarkAtParagraphEnd2(messages, this),
         new LongParagraphRule(messages, this, userConfig),
-        new MorfologikLugandaSpellerRule(messages, this, userConfig),
+        new MorfologikLugandaPossessiveSpellerRule(messages, this, userConfig),
         new DemoRule(),
         new UppercaseSentenceStartRule(messages, this,
                 Example.wrong("Eno ennyuumba nkadde. <marker>baagiziimba</marker> mu 1950."),
@@ -99,7 +99,7 @@ public class Luganda extends Language {
 
   @Override
   public SpellingCheckRule createDefaultSpellingRule(ResourceBundle messages) throws IOException {
-    return new MorfologikLugandaSpellerRule(messages, this, null);
+    return new MorfologikLugandaPossessiveSpellerRule(messages, this, null);
   }
 
   // TODO: Implement other required methods as needed

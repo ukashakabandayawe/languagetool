@@ -361,9 +361,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     </category>
 
     <!-- ================================================================= -->
-    <!-- OKUDDANG'ANA KW'EBIGAMBO (WORD REPETITION & REDUNDANCY)           -->
+    <!-- OKUDDING'ANA KW'EBIGAMBO (WORD REPETITION & REDUNDANCY)           -->
     <!-- ================================================================= -->
-    <category id="OKUDDANG_ANA_KW_EBIGAMBO" name="Okuddang'ana kw'Ebigambo (Redundancy)">
+    <category id="OKUDDING_ANA_KW_EBIGAMBO" name="Okudding'ana kw'Ebigambo (Redundancy)">
 
         <!-- Ate era redundancy -->
         <rulegroup id="ATE_ERA_REDUNDANCY" name="Ate era (Redundancy)">
@@ -387,7 +387,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token regexp="yes">^[Kk]ubanga$</token>
                     <token regexp="yes">^[Kk]ubanga$</token>
                 </pattern>
-                <message>Ekigambo kino kiddiddwamu. Gezaako lumu: <suggestion>kubanga</suggestion>.</message>
+                <message>Ekigambo kino kiddiddwamu. Gezaako: <suggestion>kubanga</suggestion>.</message>
                 <short>Okuddiŋŋana kwa 'kubanga'</short>
                 <example correction="kubanga">Tetwazze <marker>kubanga kubanga</marker> twabadde tulwade.</example>
                 <example>Tetwazze kubanga twabadde tulwade.</example>
@@ -397,7 +397,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token regexp="yes">^[Ee]ra$</token>
                     <token regexp="yes">^[Ee]ra$</token>
                 </pattern>
-                <message>Ekigambo kino kiddiddwamu. Gezaako lumu: <suggestion>era</suggestion>.</message>
+                <message>Ekigambo kino kiddiddwamu. Gezaako: <suggestion>era</suggestion>.</message>
                 <short>Okuddiŋŋana kwa 'era'</short>
                 <example correction="era">Twasanyuse <marker>era era</marker> ne tuyimba.</example>
                 <example>Twasanyuse era ne tuyimba.</example>
@@ -407,7 +407,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token regexp="yes">^[Nn]ga$</token>
                     <token regexp="yes">^[Nn]ga$</token>
                 </pattern>
-                <message>Ekigambo kino kiddiddwamu. Gezaako lumu: <suggestion>nga</suggestion>.</message>
+                <message>Ekigambo kino kiddiddwamu. Gezaako: <suggestion>nga</suggestion>.</message>
                 <short>Okuddiŋŋana kwa 'nga'</short>
                 <example correction="nga">Yali akola <marker>nga nga</marker> bwe baamulagira.</example>
                 <example>Yali akola nga bwe baamulagira.</example>

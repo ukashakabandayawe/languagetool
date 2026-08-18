@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    Luganda disambiguation rules for LanguageTool. 
+    Copyright (C) 2026 Ukaasha Yawe
+-->
+<rules lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../../../../../../languagetool-core/src/main/resources/org/languagetool/resource/disambiguation.xsd">
+    <rule id="IGNORE_CAPITALIZED_WORDS" name="ignore all capitalized words">
+        <antipattern>
+            <token postag="SENT_START" />
+            <token min="0" max="4" regexp="yes">\p{P}</token>
+            <token case_sensitive="yes" regexp="yes">\p{Lu}.*</token>
+        </antipattern>
+        <pattern>
+            <token case_sensitive="yes" regexp="yes">\p{Lu}.*</token>
+        </pattern>
+        <disambig action="ignore_spelling" />
+    </rule>
+    <rule id="ROMAN_NUMERALS" name="ignore roman numerals">
+        <pattern case_sensitive="yes">
+            <token regexp="yes">(?:M*(?:D?C{0,3}|C[DM])(?:L?X{0,3}|X[LC])(?:V?I{0,3}|I[VX]))</token>
+        </pattern>
+        <disambig action="ignore_spelling" />
+    </rule>
+</rules>

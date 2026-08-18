@@ -6,10 +6,14 @@ import org.languagetool.UserConfig;
 import org.languagetool.rules.*;
 import org.languagetool.rules.spelling.SpellingCheckRule;
 import org.languagetool.rules.spelling.multitoken.MultitokenSpeller;
-import org.languagetool.tagging.Tagger; // Tagger is required for getTagger()
+import org.languagetool.tagging.Tagger; 
+import org.languagetool.tagging.disambiguation.Disambiguator;
+import org.languagetool.tagging.disambiguation.rules.lg.LugandaRuleDisambiguator;
 import org.languagetool.tagging.lg.LugandaTagger;
+import org.languagetool.tokenizers.LugandaWordTokenizer;
 import org.languagetool.tokenizers.SRXSentenceTokenizer;
 import org.languagetool.tokenizers.SentenceTokenizer;
+import org.languagetool.tokenizers.Tokenizer;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -40,8 +44,8 @@ public class Luganda extends Language {
   }
 
   @Override
-  public org.languagetool.tokenizers.Tokenizer createDefaultWordTokenizer() {
-    return new org.languagetool.tokenizers.LugandaWordTokenizer();
+  public Tokenizer createDefaultWordTokenizer() {
+    return new LugandaWordTokenizer();
   }
 
    @Override
@@ -65,6 +69,11 @@ public class Luganda extends Language {
   @Override
   public LanguageMaintainedState getMaintainedState() {
     return LanguageMaintainedState.ActivelyMaintained;
+  }
+
+  @Override
+  public Disambiguator createDefaultDisambiguator() {
+    return new LugandaRuleDisambiguator();
   }
 
   @Override

@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 public class MorfologikLugandaPossessiveSpellerRule extends MorfologikLugandaSpellerRule {
 
   private static final String[] POSSESSIVE_PREFIXES = {
-      "ow'", "ab'", "ogw'", "egy'", "ey'", "ez'", "eky'", "eby'", "ely'",
+      "ow'", "ab'", "ogw'", "egy'", "ey'", "ez'", "eky'", "eby'", "ely'", "ew'",
       "ag'", "ak'", "obw'", "olw'", "okw'", "otw'", "w'", "b'", "gw'", "gy'",
       "y'", "z'", "ky'", "by'", "ly'", "g'", "k'", "bw'", "lw'", "kw'", "tw'", "n'"
   };

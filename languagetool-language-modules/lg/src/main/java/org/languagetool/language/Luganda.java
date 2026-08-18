@@ -92,6 +92,7 @@ public class Luganda extends Language {
         new LongParagraphRule(messages, this, userConfig),
         new WhitespaceBeforePunctuationRule(messages),
         new WordRepeatRule(messages, this),
+        new DoublePunctuationRule(messages),
 
         // The following rules are specific to Luganda only
         new MorfologikLugandaPossessiveSpellerRule(messages, this, userConfig),

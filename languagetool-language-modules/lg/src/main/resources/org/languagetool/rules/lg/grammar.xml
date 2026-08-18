@@ -184,9 +184,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token regexp="yes">^[aeiouAEIOU].*</token>
                 </pattern>
                 <message>Ekigambo "ne" kisalwako ne kifuuka "n" nga kigattiddwa ku kigambo
-                    ekitandika n'enjatuza: Gezaako <suggestion>n'</suggestion>.</message>
+                    ekitandika n'enjatuza: Gezaako <suggestion>n'\2</suggestion>.</message>
                 <short>Kozesa n' mu kifo kya ne mu maaso g'enjatuza</short>
-                <example correction="n'">Twagala caayi <marker>ne </marker>amata.</example>
+                <example correction="n'\2">Twagala caayi <marker>ne </marker>amata.</example>
                 <example>Twayagala caayi n'amata.</example>
             </rule>
         </rulegroup>
@@ -198,7 +198,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token regexp="yes">^[Ee]ngaano$</token>
                 </pattern>
                 <message>Ekigambo kino kyetaagisa akatonnyeze (apostrophe) mu nnyukuta ey'empewo
-                    'ng\'': Gezaako <suggestion>eng'aano</suggestion>.</message>
+                    "ng'": Gezaako <suggestion>eng'aano</suggestion>.</message>
                 <short>Akatonnyeze mu ng'aano</short>
                 <example correction="eng'aano">Twaguze <marker>engaano</marker> enkya.</example>
                 <example>Twaguze eng'aano enkya.</example>
@@ -255,20 +255,33 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </rule>
         </rulegroup>
 
-        <!-- Bwe ne elision -->
-        <rulegroup id="BWE_NE_CONTRACTION" name="Bwe ne -> bwe n'">
-            <rule>
-                <pattern>
-                    <token regexp="yes">^[Bb]we$</token>
-                    <token>ne</token>
-                </pattern>
-                <message>Kozesa 'bwe n\'' nga wegatta ku kigambo ekiddako: <suggestion>bwe n'</suggestion>
-                    .</message>
-                <short>Kozesa bwe n'</short>
-                <example correction="bwe n'">Awo <marker>bwe ne</marker> agenda teyamulaba.</example>
-                <example>Awo bwe n'agenda teyamulaba.</example>
-            </rule>
-        </rulegroup>
+        <rule id="SPACE_AFTER_APOSTROPHE" name="Space After Apostrophe Rule">
+            <pattern>
+                <token regexp="yes">o?(w|gw|bw|lw|tw)|a?(b|g|k)|e?(w|z|y|gy|ry|by|ky)|n</token>
+                <token>'</token>
+                <token regexp="yes" spacebefore="yes">[aeiouAEIOU].*</token>
+            </pattern>
+            <message>Wano tolekaawo kabanga. Kino ekigambo kiyina kuba: <suggestion>\1\2\3</suggestion></message>
+            <example>Ez'<marker>\1\2\3</marker>abaana</example>
+        </rule>
+        <rule id="SPACE_BEFORE_APOSTROPHE" name="Space Before Apostrophe Rule">
+            <pattern>
+                <token regexp="yes">o?(w|gw|bw|lw|tw)|a?(b|g|k)|e?(w|z|y|gy|ry|by|ky)|n</token>
+                <token spacebefore="yes">'</token>
+                <token regexp="yes" spacebefore="no">[aeiouAEIOU].*</token>
+            </pattern>
+            <message>Wano tolekaawo kabanga. Kino ekigambo kiyina kuba: <suggestion>\1\2\3</suggestion></message>
+            <example>Ez'<marker>\1\2\3</marker>abaana</example>
+        </rule>
+        <rule id="APOSTROPHE_BETWEEN_SPACES" name="Apostrophe Between Spaces Rule">
+            <pattern>
+                <token regexp="yes">o?(w|gw|bw|lw|tw)|a?(b|g|k)|e?(w|z|y|gy|ry|by|ky)|n</token>
+                <token spacebefore="yes">'</token>
+                <token regexp="yes" spacebefore="yes">[aeiouAEIOU].*</token>
+            </pattern>
+            <message>Wano tobuukawo mabanga. Kino ekigambo kiyina kuba: <suggestion>\1\2\3</suggestion></message>
+            <example>Ez'<marker>\1\2\3</marker>abaana</example>
+        </rule>
 
     </category>
 

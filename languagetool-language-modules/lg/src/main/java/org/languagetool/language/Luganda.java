@@ -81,6 +81,9 @@ public class Luganda extends Language {
         new PunctuationMarkAtParagraphEnd(messages, this),
         new PunctuationMarkAtParagraphEnd2(messages, this),
         new LongParagraphRule(messages, this, userConfig),
+        new WhitespaceBeforePunctuationRule(messages),
+
+        // The following rules are specific to Luganda only
         new MorfologikLugandaPossessiveSpellerRule(messages, this, userConfig),
         new DemoRule(),
         new UppercaseSentenceStartRule(messages, this,

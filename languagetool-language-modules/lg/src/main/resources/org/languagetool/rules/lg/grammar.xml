@@ -428,4 +428,132 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
 
     </category>
+    <!--
+    ============================================================================================================================= -->
+    <!--                                                    OBUBONERO (PUNCTUATION)                                                    -->
+    <!--
+    ============================================================================================================================= -->
+    <category id="PUNCTUATION" name="Obubonero">
+        <rule id="REDUNDANT_PUNCTUATION" name="Redundant Punctuation Rule">
+            <pattern>
+                <token regexp="yes">[.?,;:]</token>
+                <token regexp="yes">[.?,;:]</token>
+            </pattern>
+            <message>Okozesezza obubonero obusukkiridde.</message>
+            <suggestion><match no="1" regexp_match="([.?!,;:]){2,}" regexp_replace="\1" /></suggestion>
+            <example correction="?">Obeera wa<marker>??</marker></example>
+            <example>Obeera wa?</example>
+        </rule>
+        <rule id="MISSING_QUESTION_MARK" name="Missing Question Mark Rule">
+            <pattern>
+                <token regexp="yes">^(ki|ddi)$</token>
+                <token regexp="yes">^(?!\?$).+</token>
+            </pattern>
+            <message>Kirabika wano wetaagawo akabonero akabuuza. </message>
+            <suggestion>\1?</suggestion>
+            <example correction="?">Obeera wa<marker>ki</marker></example>
+            <example>Obeera wa?</example>
+        </rule>
+        <rule id="MISSING_SPACE_AFTER_PERIOD_AND_QUESTION_MARK" name="Missing Space After Period and Question Mark Rule">
+            <pattern>
+                <token regexp="yes">[.?]{1}</token>
+                <token regexp="yes" spacebefore="no" case_sensitive="no">[A-Z].*</token>
+            </pattern>
+            <message>Wano buukawo akabanga.</message> 
+            <suggestion>\1 <match no="2" case_conversion="startupper" /></suggestion>
+            <example correction="? ">Obeera wa<marker>?</marker>Era oyagala ki</example>
+            <example>Obeera wa? Era oyagala ki</example>
+        </rule>
+        <rule id="MISSING_SPACE_AFTER_PUNCTUATION" name="Missing Space After Punctuation Rule">
+            <pattern>
+                <token regexp="yes">[;:]{1}</token>
+                <token regexp="yes" spacebefore="no" case_sensitive="no">[A-Z].*</token>
+            </pattern>
+            <message>Buukawo akabanga oluvannyuma lw'akabonero</message>
+            <suggestion>\1 \2</suggestion>
+            <example correction="? ">Ekibuuzo<marker>:</marker>Oyagala ki?</example>
+            <example>Ekibuuzo: Oyagala ki?</example>
+        </rule>
+        <rule id="USELESS_SPACES_AROUND_PUNCTUATION" name="Useless Spaces Around Punctuation Rule">
+            <pattern>
+                <token regexp="yes" case_sensitive="no">[a-z].*</token>
+                <token regexp="yes" spacebefore="yes">[,;:!/]{1}</token>
+                <token regexp="yes" spacebefore="yes" case_sensitive="no">[a-z].*</token>
+            </pattern>
+            <message>Tobuukawo mabanga oluvannyuma n'oluberyeberye lw'akabonero kano</message>
+            <suggestion>\1\2 \3</suggestion>
+            <example correction="?">Obeera wa<marker> ?</marker>Era oyagala ki</example>
+            <example>Obeera wa? Era oyagala ki</example>
+        </rule>
+        <rule id="USELESS_SPACES_AROUND_QMARK_AND_PERIOD" name="Useless Spaces Around ? and . Rule">
+            <pattern>
+                <token regexp="yes" case_sensitive="no">[a-z].*</token>
+                <token regexp="yes" spacebefore="yes">[.?]{1}</token>
+                <token regexp="yes" spacebefore="yes" case_sensitive="no">[a-z].*</token>
+            </pattern>
+            <message>Tobuukawo mabanga oluvannyuma n'oluberyeberye lw'akabonero kano</message>
+            <suggestion>\1\2 <match no="3" case_conversion="startupper" /></suggestion>
+            <example correction="?">Obeera wa<marker> ?</marker>Era oyagala ki</example>
+            <example>Obeera wa? Era oyagala ki</example>
+        </rule>
+        <rule id="SPACE_PUNCTUATION_NO_SPACE" name="Useless Space Before Punctuation, yet there is no space after it">
+            <pattern>
+                <token regexp="yes" case_sensitive="no">[a-z].*</token>                
+                <token regexp="yes" spacebefore="yes">[:;!/]{1}</token>
+                <token regexp="yes" spacebefore="no" case_sensitive="no">[a-z].*</token>
+            </pattern>
+            <message>Tebabuukawo kabanga ku luberyeberye lw'akabonero kano kyokka ate babuukawo oluvannyuma lw'ako</message>
+            <suggestion>\1\2 \3</suggestion>
+            <example correction="?">Obeera wa<marker> ?</marker>Era oyagala ki</example>
+            <example>Obeera wa? Era oyagala ki</example>
+        </rule>
+        <rule id="SPACE_QMARK_PERIOD_NO_SPACE" name="Useless Space Before Question Mark or Period, yet there is no space after it">
+            <pattern>
+                <token regexp="yes" case_sensitive="no">[a-z].*</token>                
+                <token regexp="yes" spacebefore="yes">[.?]{1}</token>
+                <token regexp="yes" spacebefore="no" case_sensitive="no">[a-z].*</token>
+            </pattern>
+            <message>Tebabuukawo kabanga ku luberyeberye lw'akabonero kano kyokka ate babuukawo oluvannyuma lw'ako</message>
+            <suggestion>\1\2 <match no="3" case_conversion="startupper" /></suggestion>
+            <example correction="?">Obeera wa<marker> ?</marker>Era oyagala ki</example>
+            <example>Obeera wa? Era oyagala ki</example>
+        </rule>
+        <rule id="USELESS_SPACE_BEFORE_PUNCTUATION" name="Useless Space Before Punctuation Rule">
+            <pattern>
+                <token regexp="yes" spacebefore="no" case_sensitive="no">[a-z].*</token>                
+                <token regexp="yes" spacebefore="yes">[?!]{1}</token>
+            </pattern>
+            <message>Wano tobuukawo kabanga.</message>
+            <suggestion>\1\2</suggestion>
+            <example correction="?">Obeera wa<marker> ?</marker>Era oyagala ki</example>
+            <example>Obeera wa? Era oyagala ki</example>
+        </rule>
+    </category>
+    <!--
+    ============================================================================================================================= -->
+    <!--                                                 ENNUKUTA ENNENE (CAPITALIZATION)                                              -->
+    <!--
+    ============================================================================================================================= -->
+    <category id="CAPITALIZATION" name="Ennukuta Ennene">
+        <rule id="UPPERCASE_AFTER_PERIOD" name="Uppercase After Period Rule">
+            <pattern>
+                <token>.</token>
+                <token regexp="yes" case_sensitive="yes" spacebefore="yes">[a-z].*</token>
+            </pattern>
+            <message>Ssentensi eyina kutandika na nnukuta nnene </message>
+            <suggestion> <match no="2" case_conversion="startupper" /> </suggestion>
+            <example>Erinnya lyange nze Nsubuga.<marker> nsomera</marker> Kampala</example>
+            <example>Erinnya lyange nze Nsubuga. Nsomera Kampala </example>
+        </rule>
+        <rule id="UPPERCASE_AFTER_QUESTION_MARK" name="Uppercase After Question Mark Rule">
+            <pattern>
+                <token>?</token>
+                <token regexp="yes" case_sensitive="yes" spacebefore="yes">[a-z].*</token>
+            </pattern>
+            <message>Ssentensi etaandika na nnukuta nnene </message>
+            <suggestion> <match no="2" case_conversion="startupper" /> </suggestion>
+            <example>Erinnya lyo gwe Nsubuga?<marker> obwedda</marker> bakuyita</example>
+            <example>Erinnya lyo gwe Nsubuga? obwedda bakuyita</example>
+        </rule>
+    </category>
 </rules>

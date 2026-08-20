@@ -428,17 +428,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
 
     </category>
-    <!--
-    ============================================================================================================================= -->
-    <!--                                                    OBUBONERO (PUNCTUATION)                                                    -->
-    <!--
-    ============================================================================================================================= -->
+    <!--============================================================================================================================= -->
+    <!--                                                    OBUBONERO (PUNCTUATION)                                                   -->
+    <!--============================================================================================================================= -->
     <category id="PUNCTUATION" name="Obubonero">
-        <rule id="REDUNDANT_PUNCTUATION" name="Redundant Punctuation Rule">
-            <pattern>
-                <token regexp="yes">[.?,;:]</token>
-                <token regexp="yes">[.?,;:]</token>
-            </pattern>
+        <rule id="REDUNDANT_PUNCTUATION" name="Redundant Punctuation Rule">            
+            <regexp>([.?!,;:]){2,}</regexp>                
             <message>Okozesezza obubonero obusukkiridde.</message>
             <suggestion><match no="1" regexp_match="([.?!,;:]){2,}" regexp_replace="\1" /></suggestion>
             <example correction="?">Obeera wa<marker>??</marker></example>
@@ -529,11 +524,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example>Obeera wa? Era oyagala ki</example>
         </rule>
     </category>
-    <!--
-    ============================================================================================================================= -->
+    <!-- ============================================================================================================================= -->
     <!--                                                 ENNUKUTA ENNENE (CAPITALIZATION)                                              -->
-    <!--
-    ============================================================================================================================= -->
+    <!-- ============================================================================================================================= -->
     <category id="CAPITALIZATION" name="Ennukuta Ennene">
         <rule id="UPPERCASE_AFTER_PERIOD" name="Uppercase After Period Rule">
             <pattern>

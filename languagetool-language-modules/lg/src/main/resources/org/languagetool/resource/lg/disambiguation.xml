@@ -5,20 +5,22 @@
 -->
 <rules lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../../../../../../../languagetool-core/src/main/resources/org/languagetool/resource/disambiguation.xsd">
-    <rule id="IGNORE_CAPITALIZED_WORDS" name="ignore all capitalized words">
+    
+    <rule id="ROMAN_NUMERALS" name="ignore roman numerals">
         <antipattern>
-            <token postag="SENT_START" />
-            <token min="0" max="4" regexp="yes">\p{P}</token>
-            <token case_sensitive="yes" regexp="yes">\p{Lu}.*</token>
+            <token></token>
+            <token regexp="yes">(?:M*(?:D?C{0,3}|C[DM])(?:L?X{0,3}|X[LC])(?:V?I{0,3}|I[VX]))</token>
         </antipattern>
-        <pattern>
-            <token case_sensitive="yes" regexp="yes">\p{Lu}.*</token>
+        <pattern case_sensitive="yes">
+            <token regexp="yes">(?:M*(?:D?C{0,3}|C[DM])(?:L?X{0,3}|X[LC])(?:V?I{0,3}|I[VX]))</token>
         </pattern>
         <disambig action="ignore_spelling" />
     </rule>
-    <rule id="ROMAN_NUMERALS" name="ignore roman numerals">
-        <pattern case_sensitive="yes">
-            <token regexp="yes">(?:M*(?:D?C{0,3}|C[DM])(?:L?X{0,3}|X[LC])(?:V?I{0,3}|I[VX]))</token>
+    <rule id="IGNORE_POSSESSIVE" name="ignore possessive apostrophes">
+        <pattern case_sensitive="no">
+            <token regexp="yes">o?(w|gw|bw|lw|tw)|a?(b|g|k)|e?(w|z|y|gy|ry|by|ky)|n</token>
+            <token regexp="yes" spacebefore="no">['’]</token>
+            <token regexp="yes" >[aeiouAEIOU].*</token>
         </pattern>
         <disambig action="ignore_spelling" />
     </rule>

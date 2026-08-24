@@ -19,6 +19,19 @@ You should have received a copy of the GNU Lesser General Public
 License along with this library; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 -->
+
+<!DOCTYPE rules [
+    <!ENTITY full_possessives "\bo?(w|gw|bw|lw|tw)[aeiou]|\ba?(b|g|k)[aeiou]|\be?(w|z|y|gy|ry|by|ky)[aeiou]|\bn[aeiou]">
+    <!ENTITY elided_possessives "(?:o?(w|gw|bw|lw|tw)|a?(b|g|k)|e?(w|z|y|gy|ry|by|ky)|n)">
+    <!ENTITY apostrophe "['’]">
+    <!ENTITY vowels "[aeiou]">
+    <!ENTITY consonants "[bcdfghjklmnpqrstvwxyz]">
+    <!ENTITY any_word "^[a-zŋ]+$">
+    <!ENTITY consonant_word "^[b-df-hj-np-tv-zŋ].*$">
+    <!ENTITY consonant_string "[b-df-hj-np-tv-zŋ].*$">
+    <!ENTITY vowel_word "^[aeiou].*$">
+]>
+
 <rules lang="lg"
     xsi:noNamespaceSchemaLocation="../../../../../../../../../languagetool-core/src/main/resources/org/languagetool/rules/rules.xsd"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -245,7 +258,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                     <token regexp="yes">^[Ee]bbiringanya$</token>
                 </pattern>
-                <message>Ekigambo kino kyetaagisa akatonnyeze ku 'ng\'': Gezaako <suggestion>
+                <message>Ekigambo kino kyetaagisa akatonnyeze ku 'ng'': Gezaako <suggestion>
                     ebbiring'anya</suggestion>.</message>
                 <short>Akatonnyeze mu ebbiring'anya</short>
                 <example correction="ebbiring'anya">Twafumbye <marker>ebbiringanya</marker> ku mmere.</example>
@@ -255,7 +268,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                     <token regexp="yes">^[Kk]ungaanya$</token>
                 </pattern>
-                <message>Ekigambo kino kyetaagisa akatonnyeze ku 'ng\'': Gezaako <suggestion>
+                <message>Ekigambo kino kyetaagisa akatonnyeze ku 'ng'': Gezaako <suggestion>
                     kung'aanya</suggestion>.</message>
                 <short>Akatonnyeze mu kung'aanya</short>
                 <example correction="kung'aanya">Tulina <marker>kungaanya</marker> ssente.</example>
@@ -265,46 +278,49 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 
         <rule id="SPACE_AFTER_APOSTROPHE" name="Space After Apostrophe Rule">
             <pattern>
-                <token regexp="yes">o?(w|gw|bw|lw|tw)|a?(b|g|k)|e?(w|z|y|gy|ry|by|ky)|n</token>
-                <token regexp="yes">'|’</token>
-                <token regexp="yes" spacebefore="yes">[aeiouAEIOU].*</token>
+                <token regexp="yes" case_sensitive="no">&elided_possessives;</token>
+                <token regexp="yes">&apostrophe;</token>
+                <token regexp="yes" case_sensitive="no" spacebefore="yes">&vowel_word;</token>
             </pattern>
             <message>Wano tolekaawo kabanga. Kino ekigambo kiyina kuba: <suggestion>\1\2\3</suggestion></message>
-            <example>Ez'<marker>\1\2\3</marker>abaana</example>
+            <example correction="Ez'abaana">Ez' abaana</example>
+            <example>Ez'abaana</example>
         </rule>
         <rule id="SPACE_BEFORE_APOSTROPHE" name="Space Before Apostrophe Rule">
             <pattern>
-                <token regexp="yes">o?(w|gw|bw|lw|tw)|a?(b|g|k)|e?(w|z|y|gy|ry|by|ky)|n</token>
-                <token spacebefore="yes">'|’</token>
-                <token regexp="yes" spacebefore="no">[aeiouAEIOU].*</token>
+                <token regexp="yes" case_sensitive="no" >&elided_possessives;</token>
+                <token spacebefore="yes">&apostrophe;</token>
+                <token regexp="yes" case_sensitive="no" spacebefore="no">&vowel_word;</token>
             </pattern>
             <message>Wano tolekaawo kabanga. Kino ekigambo kiyina kuba: <suggestion>\1\2\3</suggestion></message>
-            <example>Ez'<marker>\1\2\3</marker>abaana</example>
+            <example correction="Ez'abaana">Ez 'abaana</example>
+            <example>Ez'abaana</example>
         </rule>
         <rule id="APOSTROPHE_BETWEEN_SPACES" name="Apostrophe Between Spaces Rule">
             <pattern>
-                <token regexp="yes">o?(w|gw|bw|lw|tw)|a?(b|g|k)|e?(w|z|y|gy|ry|by|ky)|n</token>
-                <token spacebefore="yes">'|’</token>
-                <token regexp="yes" spacebefore="yes">[aeiouAEIOU].*</token>
+                <token regexp="yes">&elided_possessives;</token>
+                <token spacebefore="yes">&apostrophe;</token>
+                <token regexp="yes" case_sensitive="no" spacebefore="yes">&vowel_word;</token>
             </pattern>
             <message>Wano tobuukawo mabanga. Kino ekigambo kiyina kuba: <suggestion>\1\2\3</suggestion></message>
-            <example>Ez'<marker>\1\2\3</marker>abaana</example>
+            <example correction="Ez'abaana">Ez ' abaana</example>
+            <example>Ez'abaana</example>
         </rule>
         <rule id="POSSESSIVE_FOLLWED_BY_VOWEL" name="Possessive Followed by Vowel Rule">
             <pattern>
-                <token regexp="yes" case_sensitive="no">\bo?(w|gw|bw|lw|tw)[aeiou]|\ba?(b|g|k)[aeiou]|\be?(w|z|y|gy|ry|by|ky)[aeiou]|\bn[aeiou]</token>
-                <token regexp="yes" spacebefore="yes">[aeiouAEIOU].*</token>
+                <token regexp="yes" case_sensitive="no">&full_possessives;</token>
+                <token regexp="yes" spacebefore="yes">&vowel_word;</token>
             </pattern>
             <message>Wano tolekaawo kabanga oba mabanga. Kino ekigambo kiyina kuba:<suggestion><match no="1" regexp_match="^([a-zA-Z]+)[a-zA-Z]" regexp_replace="$1" />’\2</suggestion> </message>
-            <example>Sente <marker>za abasomesa</marker></example>
-            <example correction="z’abasomesa">Sente z’abasomesa</example>
+            <example correction="z’abasomesa">Sente <marker>za abasomesa</marker></example>
+            <example>Sente z’abasomesa</example>
         </rule>
         <rule id="POSSESSIVE_FOLLOWED_BY_CONSONANT" name="Possessive Followed by Consonant Rule">
             <pattern>
-                <token regexp="yes" case_sensitive="yes">(?:O?[Ww]|O?[Gg]w|O?[Bb]w|O?[Ll]w|O?[Tt]w|A?[Bb]|A?[Gg]|A?[Kk]|E?[Ww]|E?[Zz]|E?[Yy]|E?[Gg][Yy]|E?[Rr][Yy]|E?[Bb][Yy]|E?[Kk][Yy]|N)['’][^aeiouAEIOU].*</token>
+                <token regexp="yes" case_sensitive="no">&elided_possessives;&apostrophe;&consonant_string;</token>
             </pattern>
             <message>Kino ekigambo kirabika kifu</message>
-            <example><marker>Ez'Baana</marker></example>
+            <example correction="Ez'abaana" ><marker>Ez'Baana</marker></example>
         </rule>
 
     </category>
